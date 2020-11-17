@@ -1,24 +1,51 @@
-# README
+# DB 設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
 
-Things you may want to cover:
+| Column             | Type                | Options                 |
+|--------------------|---------------------|-------------------------|
+| items              | string              | null: false             |
+| records            | string              | null: false             |
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+* has_many :prototypes
+* has_many :comments
 
-* Database creation
+## items table
 
-* Database initialization
+| Column                              | Type       | Options           |
+|-------------------------------------|------------|-------------------|
+| title                               | string     | null: false       |
+| catch_copy                          | text       | null: false       |
+| concept                             | text       | null: false       |
+| user                                | references | foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
 
-* Deployment instructions
+## areas table
 
-* ...
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| text        | text       | null: false       |
+| prototype   | references | foreign_key: true |
+| user        | references | foreign_key: true |
+
+### Association
+
+- belongs_to :prototype
+- belongs_to :user
+
+## records table
+
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| text        | text       | null: false       |
+| prototype   | references | foreign_key: true |
+| user        | references | foreign_key: true |
+
+### Association
