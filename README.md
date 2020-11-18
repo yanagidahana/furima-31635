@@ -1,51 +1,60 @@
 # DB 設計
 
 ## users table
-
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| items              | string              | null: false             |
-| records            | string              | null: false             |
+| nickname           | string            |  null: false           |
+| email              | string            |  null: false           |
+| password           | string            |  null: false           |
 
 
 ### Association
+* has_many :items
+* has_many :records
 
-* has_many :prototypes
-* has_many :comments
+
 
 ## items table
+| Column                              | Type       | Options                              |
+|-------------------------------------|------------|------------------                    |
+| name                                | string     | null: false                          |
+| price                               | integer    | null: false                          |
+| brand_id                            | references | foreign_key:true                     |
+| item_conditions_id                  | references | null: false, foreign_key: true       |
+| buyer_id                            | references | foreign_key: true                    |
 
-| Column                              | Type       | Options           |
-|-------------------------------------|------------|-------------------|
-| title                               | string     | null: false       |
-| catch_copy                          | text       | null: false       |
-| concept                             | text       | null: false       |
-| user                                | references | foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- has_many :comments
-
-## areas table
-
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| text        | text       | null: false       |
-| prototype   | references | foreign_key: true |
-| user        | references | foreign_key: true |
 
 ### Association
+- has_one :record
+* has_many :users
+- belongs_to :buyer_id
 
-- belongs_to :prototype
-- belongs_to :user
+
+
 
 ## records table
-
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| text        | text       | null: false       |
-| prototype   | references | foreign_key: true |
-| user        | references | foreign_key: true |
+| name        | string     | null: false                         |
+| seller_id   | references | null: false, foreign_key: true       |
 
 ### Association
+* has_many :users
+- has_one :item
+- has_one :area
+
+
+
+## areas table
+| Column        | Type       | Options           |
+|-------------  |------------|-------------------|
+| postcode      | string     | null: false       |
+| prefecture_id | integer    | null: false       |
+| city          | string     | null: false       |
+| block         | string     | null: false       |
+| building      | string     | null: false       |
+
+
+### Association
+- has_one :records
+
