@@ -7,10 +7,10 @@
 | email              | string            |  null: false           |
 | password           | string            |  null: false           |
 
-
 ### Association
 * has_many :items
 * has_many :records
+
 
 
 
@@ -18,16 +18,16 @@
 | Column                              | Type       | Options                              |
 |-------------------------------------|------------|------------------                    |
 | name                                | string     | null: false                          |
-| price                               | integer    | null: false                          |
-| brand_id                            | references | foreign_key:true                     |
-| item_conditions_id                  | references | null: false, foreign_key: true       |
-| buyer_id                            | references | foreign_key: true                    |
+| category                            | string     | null: false                          |
+| status                              | string     | null: false                          |
+| Shipping                            | string     | null: false                          |
+| Shipping-place                      | string     | null: false                          |
+| date-shipment                       | string     | null: false                          |
 
 
 ### Association
 - has_one :record
 * has_many :users
-- belongs_to :buyer_id
 
 
 
@@ -35,10 +35,14 @@
 ## records table
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| name        | string     | null: false                         |
 | seller_id   | references | null: false, foreign_key: true       |
+| buyer_id    | references | null: false, foreign_key: true       |
+| where       | string     | null: false      |
+
 
 ### Association
+- belongs_to :seller_id
+- belongs_to :buyer_id
 * has_many :users
 - has_one :item
 - has_one :area
@@ -53,6 +57,7 @@
 | city          | string     | null: false       |
 | block         | string     | null: false       |
 | building      | string     | null: false       |
+| phone         | string     | null: false       |
 
 
 ### Association
