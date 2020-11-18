@@ -4,55 +4,51 @@
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
 | nickname           | string            |  null: false           |
-| email              | string            |  null: false           |
+| email              | string            |  UNIQUE           |
 | encrypted_password | string            |  null: false           |
-| last-name          | string            |  null: false           |
-| first-name         | string            |   null: false          |
-| last-name-kana     | string            |  null: false           |
-| first-name-kana    | string            |  null: false           |
-| birthday-year      | integer           |  null: false           |
-| birthday-month     | integer           |  null: false           |
-| birthday-day       | integer           |   null: false          |
+| last_name          | string            |  null: false           |
+| first_name         | string            |   null: false          |
+| last_name-kana     | string            |  null: false           |
+| first_name-kana    | string            |  null: false           |
+| birthday           | date              |  null: false           |
 
 ### Association
 * has_many :items
 * has_many :records
 
-
+ 
 
 
 ## items table
-| Column                              | Type       | Options                              |
-|-------------------------------------|------------|------------------                    |
-| name                                | string     | null: false                          |
-| category                            | string     | null: false                          |
-| explanation                         | string     | null: false                          |
-| price                               | string     | null: false                          |
-| status                              | string     | null: false                          |
-| Shipping                            | string     | null: false                          |
-| Shipping-place                      | string     | null: false                          |
-| date-shipment                       | string     | null: false                          |
+| Column                                 | Type       | Options                              |
+|-------------------------------------   |------------|------------------                    |
+| name                                   | string     | null: false                          |
+| category_id                            | integer    | null: false                          |
+| explanation                            | text       | null: false                          |
+| price                                  | integer     | null: false                          |
+| status_id                              | integer     | null: false                          |
+| Shipping_id                            | integer     | null: false                          |
+| Shipping-place_id                      | integer     | null: false                          |
+| date_shipment_id                       | integer    | null: false                          |
+| user                                   | references     | null: false                          |
 
 
 ### Association
 - has_one :record
-* has_many :users
-
+- belongs_to :user
 
 
 
 ## records table
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
-| seller_id   | references | null: false, foreign_key: true       |
-| buyer_id    | references | null: false, foreign_key: true       |
+| user        | references | null: false, foreign_key: true       |
+| item        | references | null: false, foreign_key: true       |
 
 
 ### Association
-- belongs_to :seller_id
-- belongs_to :buyer_id
-* has_many :users
-- has_one :item
+- belongs_to :user
+- belongs_to :item
 - has_one :area
 
 
@@ -66,8 +62,9 @@
 | block         | string     | null: false       |
 | building      | string     |
 | phone         | string     | null: false       |
+| record         | references     | null: false       |
+
 
 
 ### Association
-- has_one :records
-
+- belongs_to :record
