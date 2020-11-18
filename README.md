@@ -5,7 +5,14 @@
 |--------------------|---------------------|-------------------------|
 | nickname           | string            |  null: false           |
 | email              | string            |  null: false           |
-| password           | string            |  null: false           |
+| encrypted_password | string            |  null: false           |
+| last-name          | string            |  null: false           |
+| first-name         | string            |   null: false          |
+| last-name-kana     | string            |  null: false           |
+| first-name-kana    | string            |  null: false           |
+| birthday-year      | integer           |  null: false           |
+| birthday-month     | integer           |  null: false           |
+| birthday-day       | integer           |   null: false          |
 
 ### Association
 * has_many :items
@@ -19,6 +26,8 @@
 |-------------------------------------|------------|------------------                    |
 | name                                | string     | null: false                          |
 | category                            | string     | null: false                          |
+| explanation                         | string     | null: false                          |
+| price                               | string     | null: false                          |
 | status                              | string     | null: false                          |
 | Shipping                            | string     | null: false                          |
 | Shipping-place                      | string     | null: false                          |
