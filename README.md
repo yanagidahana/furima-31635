@@ -37,7 +37,6 @@
 |-------------|------------|-------------------|
 | seller_id   | references | null: false, foreign_key: true       |
 | buyer_id    | references | null: false, foreign_key: true       |
-| where       | string     | null: false      |
 
 
 ### Association
@@ -56,7 +55,7 @@
 | prefecture_id | integer    | null: false       |
 | city          | string     | null: false       |
 | block         | string     | null: false       |
-| building      | string     | null: false       |
+| building      | string     |
 | phone         | string     | null: false       |
 
 
