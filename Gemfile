@@ -62,3 +62,6 @@ group :production do
 end
 
 gem 'devise'
+
+gem "slim-rails"
+gem "html2slim"
