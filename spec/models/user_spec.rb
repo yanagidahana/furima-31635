@@ -32,7 +32,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Nickname is too long (maximum is 6 characters)")
       end
       it "emailが空では登録できない" do
-        @user.email = ""
+        @user.email = "testgmail.com"
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
@@ -42,6 +42,11 @@ describe User do
         another_user.email = @user.email
         another_user.valid?
         expect(another_user.errors.full_messages).to include("Email has already been taken")
+      end
+      it "emailに＠がないと保存できない" do
+        @user.email = "test@gmail.com"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it "passwordが空では登録できない" do
         @user.password = ""
@@ -59,6 +64,10 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
+      it "passwordが存在してもpassword_confirmationと一致していないと登録できない" do
+        @user.password_confirmation = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
   end
 end
