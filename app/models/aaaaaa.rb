@@ -1,0 +1,2 @@
+class DateShipmentSkipMigration < ApplicationRecord
+end

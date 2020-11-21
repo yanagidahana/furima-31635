@@ -1,0 +1,2 @@
+class ShippingSkipMigration < ApplicationRecord
+end

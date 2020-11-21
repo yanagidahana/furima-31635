@@ -1,0 +1,2 @@
+class StatusSkipMigration < ApplicationRecord
+end
