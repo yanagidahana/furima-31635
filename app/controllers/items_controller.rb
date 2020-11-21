@@ -3,4 +3,8 @@ class ItemsController < ApplicationController
     #@items = Item.includes(:user)
   end
 
+  def new
+    @item = Item.new
+  end
+
 end

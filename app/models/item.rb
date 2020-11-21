@@ -8,9 +8,18 @@ class Item < ApplicationRecord
   belongs_to_active_hash: shipping_place
   belongs_to_active_hash: date_shipment
 
+   presence: true
+
+  #空の投稿を保存できないようにする
+  validates :image, :name, :explanation, :price, :user, presence: true
+  validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
+
+
+  #空の投稿を保存できないようにする
+  validates :category_id, numericality: { other_than: 0 } 
+  validates :category_id, numericality: { other_than: 0 } 
+
 end
 
-#private
-  #def message_params
-   # params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
-  #end
+/^[0-9a-zA-Z]*$/
+9999999
