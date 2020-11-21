@@ -71,12 +71,3 @@
 
 
 
-      t.name
-      t.category_id
-      t.explanation
-      t.price
-      t.status_id
-      t.shipping_id
-      t.shipping_place_id
-      t.date_shipment_id
-      t.user      
