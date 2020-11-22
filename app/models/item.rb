@@ -12,14 +12,14 @@ class Item < ApplicationRecord
 
   #空の投稿を保存できないようにする
   validates :image, :name, :explanation, :price, :user, presence: true
-  validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
+  validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   #空の投稿を保存できないようにする
   validates :category_id, numericality: { other_than: 0 } 
   validates :category_id, numericality: { other_than: 0 } 
 
+  validates :price, format: {with: /\A[０-９]+\z/, message: Price Half-width number}
+
 end
 
-/^[0-9a-zA-Z]*$/
-9999999
