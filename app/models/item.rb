@@ -27,4 +27,4 @@ class Item < ApplicationRecord
   end  
 validates :price, numericality: {with: /\A[０-９]+\z/, message: "Price Half-width number"}
 
-
+end
