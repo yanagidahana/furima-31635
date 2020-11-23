@@ -22,7 +22,7 @@ class Item < ApplicationRecord
   validates :shipping_place_id, numericality: { other_than: 0 } 
   validates :date_shipment_id, numericality: { other_than: 0 } 
 
-  validates :price, format: {with: /\A[０-９]+\z/, message: "Price Half-width number"}
+  validates :price, numericality: {with: /\A[０-９]+\z/, message: "Price Half-width number"}
 
 end
 
