@@ -34,12 +34,12 @@ describe Item do
         expect(@item.errors.full_messages).to include("Price can't be blank", "Price is not a number", "Price Price Half-width number")
       end 
       it "priceが299以下であれば登録できない" do
-        @item.price = "100"
+        @item.price = 100
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300", "Price Price Half-width number")
       end   
       it "priceが¥10000000以上であれば登録できない" do
-        @item.price = "11111111"
+        @item.price = 11111111
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999", "Price Price Half-width number")
       end   
@@ -48,6 +48,35 @@ describe Item do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not a number", "Price Price Half-width number")
       end  
+      it "categoryが0では登録できない" do
+        @item.price = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300", "Price Price Half-width number")
+      end  
+      it "statusが0では登録できない" do
+        @item.price = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300", "Price Price Half-width number")
+      end  
+      it "shippingが0では登録できない" do
+        @item.price = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300", "Price Price Half-width number")
+      end  
+      it "shipping_placeが0では登録できない" do
+        @item.price = 0
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300", "Price Price Half-width number")
+      end  
+      it "date_shipmentが0では登録できない" do
+        @item.price = 0
+        @item.valid?
+        binding.pry
+        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300", "Price Price Half-width number")
+      end  
+
+
+
    end     
   end
 end  
