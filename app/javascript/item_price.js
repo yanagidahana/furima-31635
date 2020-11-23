@@ -1,5 +1,10 @@
 window.addEventListener('load', () => {
-  const priceInput = document.getElementById("profit");
-  console.log(priceInput);
+  const pricefee = document.getElementById("item-price");
+  pricefee.addEventListener("input", () => {
+    const priceInput = document.getElementById("item-price").value
+    const fee = document.getElementById("add-tax-price")
+    const profit = document.getElementById("profit")
+    fee.innerHTML = priceInput * 0.1
+    profit.innerHTML = priceInput * 0.9
+   })
   });
-
