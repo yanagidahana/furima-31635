@@ -16,13 +16,15 @@ class Item < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 }
 
   #空の投稿を保存できないようにする
-  validates :category_id, numericality: { other_than: 0 } 
-  validates :status_id, numericality: { other_than: 0 } 
-  validates :shipping_id, numericality: { other_than: 0 } 
-  validates :shipping_place_id, numericality: { other_than: 0 } 
-  validates :date_shipment_id, numericality: { other_than: 0 } 
+  with_options presence: true do
+    with_options numericality: { other_than: 0 }  do
+      validates :category_id
+      validates :status_id
+      validates :shipping_id
+      validates :shipping_place_id
+      validates :date_shipment_id 
+    end
+  end  
+validates :price, numericality: {with: /\A[０-９]+\z/, message: "Price Half-width number"}
 
-  validates :price, numericality: {with: /\A[０-９]+\z/, message: "Price Half-width number"}
-
-end
 
