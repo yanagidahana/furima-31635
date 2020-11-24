@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 
   before_action :authenticate_user!,only: [:new, :cleate, ]
+  before_action :contributor_confirmation, only: [:edit]
+
 
   def index
     @item = Item.all.order("created_at DESC")
@@ -17,6 +19,9 @@ class ItemsController < ApplicationController
      else
       render :new
     end
+  end
+
+  def edit
   end
 
   private
