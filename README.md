@@ -28,7 +28,7 @@
 | price                                  | integer     | null: false                          |
 | status_id                              | integer     | null: false                          |
 | shipping_id                            | integer     | null: false                          |
-| shipping-place_id                      | integer     | null: false                          |
+| shipping_place_id                      | integer     | null: false                          |
 | date_shipment_id                       | integer    | null: false                          |
 | user                                   | references     | null: false                          |
 
@@ -70,12 +70,4 @@
 - belongs_to :record
 
 
-t.name
-t.category_id
-t.explanation
-t.price
-t.status_id
-t.shipping_id
-t.shipping-place_id
-t.date_shipment_id
-t.user
+
