@@ -127,9 +127,9 @@
     <ul class='item-lists'>
 
   <% if @item[0] != nil %>
-   　 <% @item.each do |item| %>
+     <% @item.each do |item| %>
       <li class='list'>
-        <%= link_to "items_path" do %>
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
           <div class='sold-out'>
