@@ -8,6 +8,6 @@ class Buy
   def save
     # 各テーブルにデータを保存する処理を書く
     record = Records.create(user: user, item: item)
-    areas.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, phone: phone, record: record, record_id: record.id)
+    area.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, phone: phone, record: record, record_id: record.id)
   end
 end
