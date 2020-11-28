@@ -7,7 +7,7 @@ class CreateAreas < ActiveRecord::Migration[6.0]
       t.string :block,                null: false
       t.string :building,             null: false
       t.string :phone,                null: false
-      t.references :record,           foreign_key: true
+      t.references record,           foreign_key: true
       t.timestamps
     end
   end
