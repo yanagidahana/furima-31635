@@ -14,9 +14,19 @@ class RecordsController < ApplicationController
       render action: :index
     end
   end
-  
+
   
   private
+
+  def pay_item
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp::Charge.create(
+      amount: record_params[:price],
+      card: record_params[:token],
+      currency:'jpy'
+    )
+ end
+
   def record_params
     params.require(:buy).permit(:postcode, :shipping_place_id, :city, :block, :building, :phone).merge(user_id: current_user.id, item_id: @item.id)
   end
