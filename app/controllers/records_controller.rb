@@ -9,7 +9,8 @@ class RecordsController < ApplicationController
     @buy = Buy.new(record_params)
     if @buy.valid?
       @buy.save
-      redirect_to action: :index
+      pay_item
+      redirect_to root_path
     else
       render action: :index
     end
@@ -21,14 +22,14 @@ class RecordsController < ApplicationController
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
-      amount: record_params[:price],
+      amount:  @item.price,
       card: record_params[:token],
       currency:'jpy'
     )
  end
 
   def record_params
-    params.require(:buy).permit(:postcode, :shipping_place_id, :city, :block, :building, :phone).merge(user_id: current_user.id, item_id: @item.id)
+    params.require(:buy).permit(:postcode, :shipping_place_id, :city, :block, :building, :phone).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
   
   def set_item

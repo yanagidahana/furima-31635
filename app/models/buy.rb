@@ -1,6 +1,6 @@
 class Buy
   include ActiveModel::Model
-  attr_accessor :postcode, :shipping_place_id, :city, :block, :building, :phone,:user_id, :item_id
+  attr_accessor :postcode, :shipping_place_id, :city, :block, :building, :phone,:user_id, :item_id,:token
 
   # ここにバリデーションの処理を書く
   validates :postcode, :shipping_place_id, :city, :block, :phone, presence: true
