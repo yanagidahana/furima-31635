@@ -3,8 +3,7 @@ class Buy
   attr_accessor :postcode, :shipping_place_id, :city, :block, :building, :phone,:user_id, :item_id,:token
 
   # ここにバリデーションの処理を書く
-  validates :postcode, :shipping_place_id, :city, :block, :phone, presence: true
-
+  validates :postcode, :shipping_place_id, :city, :block, :phone,  :token, presence: true
 
   def save
     # 各テーブルにデータを保存する処理を書く
