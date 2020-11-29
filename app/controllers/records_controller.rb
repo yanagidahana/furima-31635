@@ -18,7 +18,6 @@ class RecordsController < ApplicationController
 
   
   private
-
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
@@ -29,7 +28,7 @@ class RecordsController < ApplicationController
  end
 
   def record_params
-    params.require(:buy).permit(:postcode, :shipping_place_id, :city, :block, :building, :phone).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
+    params.require(:buy).permit(:postcode, :shipping_place_id, :city, :block, :building, :phone, :token).merge(user_id: current_user.id, item_id: @item.id)
   end
   
   def set_item
