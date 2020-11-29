@@ -5,14 +5,8 @@ FactoryBot.define do
     city                        {"市区町村"}
     block                       {"番地"}
     building                    {"建物名"}
-    phone                       {"電話番号"}
+    phone                       {"09012345678"}
+    token                       {"tok_6fe5a9aaaaaaaaaaee0000000000"}
 
-    # user                         {""}
-    # item                         {""}
-
-
-    # after(:build) do |item|
-    #   area.image.attach(io: File.open('spec/public/images/harry.jpeg'), filename: 'harry.jpeg')
-    # end
   end
 end

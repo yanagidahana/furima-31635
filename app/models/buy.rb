@@ -4,6 +4,11 @@ class Buy
 
   # ここにバリデーションの処理を書く
   validates :postcode, :shipping_place_id, :city, :block, :phone,  :token, presence: true
+  validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: "can't be blank" }
+  validates :phone, numericality: true
+  validates :phone, length: {maximum: 12}
+
+
 
   def save
     # 各テーブルにデータを保存する処理を書く
