@@ -16,7 +16,7 @@ describe Buy do
 
       it "buildingは空でも登録できる" do
         @buy.building = nil
-        @buy.valid? 
+        @buy.valibrew install git-secrets
         expect(@buy).to be_valid
       end   
     end
