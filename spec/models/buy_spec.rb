@@ -1,11 +1,11 @@
 require 'rails_helper'
 describe Buy do
   before do
-   sleep 0.1
     seller = FactoryBot.create(:user)
     item = FactoryBot.create(:item, user_id: seller.id)
     buyer = FactoryBot.create(:user)
     @buy = FactoryBot.build(:buy, user_id: buyer.id, item_id: item.id)
+    sleep(1)
   end
   
   describe '商品購入' do
@@ -72,6 +72,11 @@ describe Buy do
       expect(@buy.errors.full_messages).to include("Token can't be blank")
       end
 
+      it "shipping_place_idが0だと登録できない" do
+        @buy.shipping_place_id = 0
+        @buy.valid? 
+      expect(@buy.errors.full_messages).to include("Shipping place can't be blank")
+      end   
      end
   end
 end

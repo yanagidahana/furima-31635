@@ -19,7 +19,7 @@ class Item < ApplicationRecord
 
   #空の投稿を保存できないようにする
   with_options presence: true do
-    with_options numericality: { other_than: 0 }  do
+    with_options numericality: { other_than: 0, message: "can't be blank"}  do
       validates :category_id
       validates :status_id
       validates :shipping_id
