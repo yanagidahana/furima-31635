@@ -12,8 +12,13 @@ describe Buy do
     context '商品購入が上手くいく時' do
       it "postcodeとshipping_place_idとcityとblockとphoneが存在すれば登録できる" do
         expect(@buy).to be_valid
-
       end
+
+      it "buildingは空でも登録できる" do
+        @buy.building = nil
+        @buy.valid? 
+        expect(@buy).to be_valid
+      end   
     end
 
      context '購入がうまくいかないとき' do

@@ -4,8 +4,8 @@ class RecordsController < ApplicationController
 
   def index
      @buy = Buy.new
-    return redirect_to root_path if current_user.id == set_item.user_id || set_item.record!=nil
-  end  
+     return redirect_to root_path if current_user.id == @item.user_id || @item.record!=nil
+    end  
 
   def create
     @buy = Buy.new(record_params)
