@@ -4,10 +4,10 @@ class Buy
 
   # ここにバリデーションの処理を書く
   validates :postcode, :shipping_place_id, :city, :block, :phone,  :token, presence: true
-  validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: "can't be blank" }
+  validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: "はハイフンを入力して下さい" }
   validates :phone, numericality: true
   validates :phone, length: {maximum: 12}
-  validates :shipping_place_id, numericality: {other_than: 0, message: "can't be blank" }
+  validates :shipping_place_id, numericality: {other_than: 0, message: "を入力して下さい" }
 
 
 
