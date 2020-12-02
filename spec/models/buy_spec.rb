@@ -25,62 +25,62 @@ describe Buy do
        it "postcodeが空だと登録できない" do
          @buy.postcode = nil
          @buy.valid? 
-       expect(@buy.errors.full_messages).to include("Postcode can't be blank")
+       expect(@buy.errors.full_messages).to include("郵便番号を入力してください", "郵便番号はハイフンを入力して下さい")
      end   
 
        it "shipping_place_idが空だと登録できない" do
          @buy.shipping_place_id = nil
          @buy.valid?
-       expect(@buy.errors.full_messages).to include("Shipping place can't be blank")
+       expect(@buy.errors.full_messages).to include("都道府県を入力してください", "都道府県を入力して下さい")
        end
 
        it "cityが空だと登録できない" do
          @buy.city = nil
          @buy.valid? 
-       expect(@buy.errors.full_messages).to include("City can't be blank")
+       expect(@buy.errors.full_messages).to include("市区町村を入力してください")
        end
 
        it "blockが空だと登録できない" do
          @buy.block = nil
          @buy.valid? 
-       expect(@buy.errors.full_messages).to include("Block can't be blank")
+       expect(@buy.errors.full_messages).to include("番地を入力してください")
        end
 
        it "phoneが空だと登録できない" do
          @buy.phone = nil
          @buy.valid? 
-       expect(@buy.errors.full_messages).to include("Phone can't be blank")
+       expect(@buy.errors.full_messages).to include("電話番号を入力してください", "電話番号は数値で入力してください")
        end   
 
        it "postcodeにハイフンがないと登録できない" do
          @buy.postcode = "0000000"
          @buy.valid?
-       expect(@buy.errors.full_messages).to include("Postcode can't be blank")
+       expect(@buy.errors.full_messages).to include("郵便番号はハイフンを入力して下さい")
        end
 
        it "phoneにハイフンがあると登録できない" do
          @buy.phone = "000-00000000"
          @buy.valid? 
-       expect(@buy.errors.full_messages).to include("Phone is not a number")
+       expect(@buy.errors.full_messages).to include("電話番号は数値で入力してください")
        end
 
        it "phoneが12桁以上だと登録できない" do
         @buy.phone = "000-0000-00000"
         @buy.valid? 
-      expect(@buy.errors.full_messages).to include("Phone is not a number", "Phone is too long (maximum is 12 characters)")
+      expect(@buy.errors.full_messages).to include("電話番号は数値で入力してください", "電話番号は12文字以内で入力してください")
       end   
 
 
        it "tokenが空だと登録できない" do
         @buy.token = nil
         @buy.valid? 
-      expect(@buy.errors.full_messages).to include("Token can't be blank")
+      expect(@buy.errors.full_messages).to include("カード情報を入力してください")
       end
 
       it "shipping_place_idが0だと登録できない" do
         @buy.shipping_place_id = 0
         @buy.valid? 
-      expect(@buy.errors.full_messages).to include("Shipping place can't be blank")
+      expect(@buy.errors.full_messages).to include("都道府県を入力して下さい")
       end   
      end
   end

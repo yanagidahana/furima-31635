@@ -19,7 +19,7 @@ class Item < ApplicationRecord
 
   #空の投稿を保存できないようにする
   with_options presence: true do
-    with_options numericality: { other_than: 0, message: "can't be blank"}  do
+    with_options numericality: { other_than: 0, message: "を入力して下さい"}  do
       validates :category_id
       validates :status_id
       validates :shipping_id
@@ -27,6 +27,6 @@ class Item < ApplicationRecord
       validates :date_shipment_id 
     end
   end  
-validates :price, numericality: {with: /\A[０-９]+\z/, message: "Price Half-width number"}
+validates :price, numericality: {with: /\A[０-９]+\z/, message: "は半角数字で入力して下さい"}
 
 end
