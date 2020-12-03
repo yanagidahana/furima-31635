@@ -77,3 +77,11 @@ gem 'payjp'
 gem "aws-sdk-s3", require: false
 
 gem 'rails-i18n'
+
+group :development, :test do
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
+end
