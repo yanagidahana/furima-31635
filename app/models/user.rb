@@ -8,7 +8,7 @@ class User < ApplicationRecord
      with_options presence: true do
          validates :nickname
          validates :email
-         validates :encrypted_password
+         validates :password
          validates :birthday
      end
      with_options presence: true, format: {with: /\A[ぁ-んァ-ン一-龥]/} do
@@ -19,8 +19,14 @@ class User < ApplicationRecord
          validates :last_name_kana
          validates :first_name_kana
     end    
+           VALID_PASSWORD_REGEX =/\A(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])\w{6,12}\z/
+           validates :password, presence: true,
+            format: { with: VALID_PASSWORD_REGEX,
+             message: "は半角6~12文字英大文字・小文字・数字それぞれ１文字以上含む必要があります"}
+
 
     has_many :items, dependent: :destroy
     has_many :records
 
 end
+
