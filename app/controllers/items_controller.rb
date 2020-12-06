@@ -9,7 +9,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = ItemTag.new
+    @item = ItemsTag.new
   end
 
   def create
