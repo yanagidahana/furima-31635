@@ -93,6 +93,10 @@
         <span>コメントする<span>
       <% end %>
     <% end %>
+      <div id='comments'>
+        <% @comments.reverse_each do |comment| %>
+          <p><%= comment.text %></p>
+      <% end %>
   </div>
 
   <div class="links">
